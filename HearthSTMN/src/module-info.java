@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author Asato
+ *
+ */
+module HearthSTMN {
+}
