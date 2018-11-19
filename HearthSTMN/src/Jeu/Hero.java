@@ -2,7 +2,8 @@ package Jeu;
 
 public class Hero {
 	String heroName;
-	public static int lifePoint = 30;
+	public int lifePoint = 30;
+	int exhaust = 1;
 	// int armure;
 	
 	public int takeDamage (int attaque) {
