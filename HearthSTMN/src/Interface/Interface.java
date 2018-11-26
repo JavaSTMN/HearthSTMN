@@ -5,8 +5,6 @@ import java.io.IOException;
 
 import javax.swing.JFrame;
 
-
-
 public class Interface extends JFrame {
 	public Interface() throws IOException {
 		this.setTitle("HearthSTMN"); // titre de la fenetre
@@ -18,6 +16,7 @@ public class Interface extends JFrame {
 		Button button = new Button("EXIT");
 		
 		BackGround background = new BackGround();
+		background.BackGroundInterface();
 		
 		background.add(button);
 		

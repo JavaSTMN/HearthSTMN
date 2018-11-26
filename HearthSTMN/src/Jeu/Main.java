@@ -4,13 +4,18 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import Interface.Interface;
+import Interface.Menu;
 
 
 public class Main {
-	  public static void main(String[] args) throws IOException {
-		  
+	  public static void main(String[] args) throws IOException {	  
+		  Menu menu = new Menu();
+		  menu.setVisible(true);
+	  } 
+	
+	  public static void startGame() throws IOException {
 		  Interface inter = new Interface();
-		  /*Status player1 = new Status();
+		  Status player1 = new Status();
 		  System.out.println("Hero1 : " + player1.hero.lifePoint);
 		  Status player2 = new Status();
 		  System.out.println("Hero2 : " + player1.hero.lifePoint);
@@ -78,9 +83,9 @@ public class Main {
 				  endGame = false; 
 			  }
 			  
-		  }*/
+		  }
 		  
-		  /*// Création des 2 héros
+		  // Création des 2 héros
 		  Hero hero1 = new Hero();
 		  Hero hero2 = new Hero();
 		  
@@ -122,8 +127,6 @@ public class Main {
 			  System.out.println("nbCarteInHand : " + handPlayer1.size());
 			  System.out.println("lifeHero : " + hero1.lifePoint);
 			  i++;
-		}*/
-
-	  } 
-	
+		}
+	  }
 }
