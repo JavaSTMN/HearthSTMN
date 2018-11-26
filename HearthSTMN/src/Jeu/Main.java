@@ -1,10 +1,16 @@
 package Jeu;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
+import Interface.Interface;
+
+
 public class Main {
-	  public static void main(String[] args) { 
-		  Status player1 = new Status();
+	  public static void main(String[] args) throws IOException {
+		  
+		  Interface inter = new Interface();
+		  /*Status player1 = new Status();
 		  System.out.println("Hero1 : " + player1.hero.lifePoint);
 		  Status player2 = new Status();
 		  System.out.println("Hero2 : " + player1.hero.lifePoint);
@@ -72,7 +78,7 @@ public class Main {
 				  endGame = false; 
 			  }
 			  
-		  }
+		  }*/
 		  
 		  /*// Création des 2 héros
 		  Hero hero1 = new Hero();

@@ -6,4 +6,5 @@
  *
  */
 module HearthSTMN {
+	requires java.desktop;
 }
