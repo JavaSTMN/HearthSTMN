@@ -8,7 +8,7 @@ public class Status {
 	Hand hand;
 	Card[] deckPlayer;
 	ArrayList<Card> handPlayer;
-	Mana mana;
+	public Mana mana;
 	
 	public Status() {
 		hero = new Hero();

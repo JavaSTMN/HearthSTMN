@@ -1,8 +1,8 @@
 package Jeu;
 
 public class Mana {
-	int currentMana;
-	int overallMana = 0;
+	public int currentMana;
+	public int overallMana = 0;
 
 	public void increase() {
 		if (overallMana < 10) {

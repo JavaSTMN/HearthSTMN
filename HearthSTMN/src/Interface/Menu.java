@@ -33,7 +33,7 @@ public class Menu extends JFrame{
 		play.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e){
 				try {
-					Main.startGame();
+					Main.initGame();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

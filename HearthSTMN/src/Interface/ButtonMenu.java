@@ -20,27 +20,7 @@ public class ButtonMenu extends JButton {
 	  private String name;
 	  private Image img;
 	  
-	  public ButtonMenu(String str) {
-		  
-		  
-		  
-		  
-		    /*this.name = str;
-		    try {
-		      img = ImageIO.read(new File("fondBoutonMenu.png"));
-		    } catch (IOException e) {
-		      e.printStackTrace();
-		    }
-		    this.addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
-					System.out.println("Entré");
-					System.exit(0);
-					
-				}
-			});*/
-		    
+	  public ButtonMenu(String str) {		    
 	}
 
 	public void paintComponent(Graphics g) {

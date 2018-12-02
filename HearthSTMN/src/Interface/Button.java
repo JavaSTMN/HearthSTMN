@@ -14,6 +14,9 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+
+import Jeu.Main;
+
 import javax.swing.JButton;
 
 public class Button extends JButton {
@@ -29,13 +32,20 @@ public class Button extends JButton {
 		      e.printStackTrace();
 		    }
 		    this.addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
-					System.out.println("Entré");
-					System.exit(0);
-					
-				}
+				public void actionPerformed(ActionEvent e){
+					System.out.println("FIN DE TOUR !!!!!!!");
+					if (Main.playerTurn == 0) {
+						Main.playerTurn = 1;
+					} else {
+						Main.playerTurn = 0;
+					}
+					try {
+						Main.play(Main.player1, Main.player2);
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}		
 			});
 	}
 

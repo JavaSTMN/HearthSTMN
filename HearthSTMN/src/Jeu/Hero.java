@@ -11,6 +11,7 @@ public class Hero {
 		lifePoint = life - attaque;
 		if (lifePoint <= 0) {
 			lose();
+			Main.endGame = true;
 		}
 		return life;
 	}

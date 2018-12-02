@@ -1,132 +1,68 @@
 package Jeu;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.swing.JButton;
 
 import Interface.Interface;
 import Interface.Menu;
 
 
 public class Main {
+	public static int endTurn = 0;
+	public static int playerTurn = 0;
+	public static boolean endGame = false;
+	public static Status player1;
+	public static Status player2;
+	
 	  public static void main(String[] args) throws IOException {	  
 		  Menu menu = new Menu();
 		  menu.setVisible(true);
 	  } 
-	
-	  public static void startGame() throws IOException {
-		  Interface inter = new Interface();
-		  Status player1 = new Status();
+	  
+	  public static void initGame() throws IOException {	  
+		  player1 = new Status();
 		  System.out.println("Hero1 : " + player1.hero.lifePoint);
-		  Status player2 = new Status();
+		  player2 = new Status();
 		  System.out.println("Hero2 : " + player1.hero.lifePoint);
-		  System.out.println("----------");
-
-		  boolean endGame = true;
-		  boolean endTurn = true;
-		  boolean tp = false;
-		  Status turnPlayer = player1;
-		  int end = 0;
-
-		  System.out.println("Start Game !");
-		  System.out.println("----------");
-		  while (endGame) {
-
-			  if (tp == false) {
-				  turnPlayer = player1;
-				  System.out.println("Player 1 turn");
-				  System.out.println("Your Hero : " + player1.hero.lifePoint);
-				  System.out.println("Ennemie Hero : " + player2.hero.lifePoint);
-				  tp = true;
-			  } else {
-				  turnPlayer = player2;
-				  System.out.println("Player 2 turn");
-				  System.out.println("Your Hero : " + player2.hero.lifePoint);
-				  System.out.println("Ennemie Hero : " + player1.hero.lifePoint); 
-				  tp = false;
-			  }
-			  endTurn = true;
-			  while (endTurn) {
-				  Hand.verifHand(turnPlayer.handPlayer, turnPlayer.hand, turnPlayer.deckPlayer, turnPlayer.deck, turnPlayer.hero);
-				  turnPlayer.mana.increase();
-				  System.out.println("nbCardDeck :" + turnPlayer.deck.nbDeckCard);
-				  System.out.println("nbCardHand : " + turnPlayer.hand.nbCard);
-				  System.out.println("mana : " + turnPlayer.mana.currentMana);
-				  
-				  int j = 0;
-				  int maxWhile = turnPlayer.hand.nbCard;
-				  
-				  while (j < maxWhile) {
-					  if ((turnPlayer.handPlayer.get(j)).cardtype == "Monstre") {
-						  System.out.println("Card" + (j + 1) + ": " + 
-						  (turnPlayer.handPlayer.get(j)).cardName + " - " + 
-						  (turnPlayer.handPlayer.get(j)).mana + 
-						  "(" + (turnPlayer.handPlayer.get(j)).attack + "/" + (turnPlayer.handPlayer.get(j)).lifePoint + ")");
-					  } else {
-						  System.out.println("Card" + (j + 1) + ": " + (turnPlayer.handPlayer.get(j)).cardName + 
-						  " - " + 
-						  (turnPlayer.handPlayer.get(j)).mana + 
-						  "(" + (turnPlayer.handPlayer.get(j)).effect + ")");
-					  }
-					  
-					  j++;
-					  
-				  }
-				  
-				  System.out.println("\nWhat do you do?");
-				  System.out.println("Choose a number for play card (" + maxWhile + ") or 0 for end turn.");
-				  System.out.println("\r");
-				  endTurn = false;
-				  end++;
-			  }
-			  
-			  if (end == 39) {
-				  endGame = false; 
-			  }
-			  
-		  }
-		  
-		  // Création des 2 héros
-		  Hero hero1 = new Hero();
-		  Hero hero2 = new Hero();
-		  
-		  Deck deck1 = new Deck();
-		  Deck deck2 = new Deck();
-		  
-		  Hand hand1 = new Hand();
-		  Hand hand2 = new Hand();
-		  
-		  // Création des 2 deck
-		  Card[] deckPlayeur1;
-		  deckPlayeur1 = deck1.createDeck();
-		  
-		  Card[] deckPlayeur2;
-		  deckPlayeur2 = deck2.createDeck();
-		  
-		  ArrayList<Card> handPlayer1 = hand1.startHand(deckPlayeur1, deck1);
-		  ArrayList<Card> handPlayer2 = hand1.startHand(deckPlayeur2, deck2);
-		  
-		  System.out.println("deck j1");
-		  System.out.println(deck1.nbDeckCard);
-		  System.out.println("Main j1");
-		  System.out.println((handPlayer1.get(0)).cardName);
-		  System.out.println((handPlayer1.get(1)).cardName);
-		  System.out.println((handPlayer1.get(2)).cardName);
-		  
-		  System.out.println("deck j2");
-		  System.out.println(deck1.nbDeckCard);
-		  System.out.println("Main j2");
-		  System.out.println((handPlayer2.get(0)).cardName);
-		  System.out.println((handPlayer2.get(1)).cardName);
-		  System.out.println((handPlayer2.get(2)).cardName);
-
-		  int i = 0;
-		while (i < 25) {
-			System.out.println("Dans while --------------------");
-			 Hand.verifHand(handPlayer1, hand1, deckPlayeur1, deck1, hero1);
-			  System.out.println("nbCarteInDeck : " + deck1.nbDeckCard);
-			  System.out.println("nbCarteInHand : " + handPlayer1.size());
-			  System.out.println("lifeHero : " + hero1.lifePoint);
-			  i++;
-		}
+		  Interface inter = new Interface();
+		  play(player1, player2);
 	  }
+
+	  public static void play(Status player1, Status player2) throws IOException {
+		  Status player;
+		  Status Oplayer;
+		  System.out.println("playerTurn" + playerTurn);
+		  if (playerTurn == 0) {
+			 player = player1;
+			 Oplayer = player2;
+			 System.out.println("je suis player 1");
+		  } else {
+			 player = player2;
+			 Oplayer = player1;
+			 System.out.println("je suis player 2");
+		  }		  
+		  
+		  
+		  
+		  
+		  Hand.verifHand(player.handPlayer, player.hand, player.deckPlayer, player.deck, player.hero);
+		  player.mana.increase();
+		  System.out.println("Hero : " + player.hero.lifePoint);
+		  System.out.println("nbCardDeck :" + player.deck.nbDeckCard);
+		  System.out.println("nbCardHand : " + player.hand.nbCard);
+		  System.out.println("mana : " + player.mana.currentMana); 
+		  
+		  Interface.labelManaCurrentPlayer.setText( "Mana : " + player.mana.currentMana + "/" + player.mana.overallMana);
+		  Interface.nbCardDeckCurrentPlayer.setText( "Deck : " + player.deck.nbDeckCard);
+		  Interface.hpHeroCurrentPlayer.setText( "Hero : " + player.hero.lifePoint);
+		  
+		  Interface.labelManaOtherPlayer.setText( "Mana : " + Oplayer.mana.overallMana);
+		  Interface.nbCardDeckOtherPlayer.setText( "Deck : " + Oplayer.deck.nbDeckCard);
+		  Interface.hpHeroManaOtherPlayer.setText( "Hero : " + Oplayer.hero.lifePoint);
+		  	  
+	  }	 
 }
